@@ -2,10 +2,9 @@
   "name": "authentificationserver",
   "version": "1.0.0",
   "description": "Authentification server for lazy people <3",
-  "main": "src/index.js",
+  "main": "src/js/index.js",
   "scripts": {
-    "build": "node src/index.js",
-    "start": "node-scripts start ./src/index.js"
+    "start": "node src/js/index.js"
   },
   "repository": {
     "type": "git",
