@@ -4,5 +4,6 @@ CREATE TABLE Users (
     UserName VARCHAR(50) NOT NULL,
     DisplayName VARCHAR(50),
     Password BINARY(60) NOT NULL,
+    IsAdmin INT DEFAULT 0,
     CONSTRAINT PK_Users PRIMARY KEY (Id, ClientId)
 );
