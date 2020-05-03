@@ -20,7 +20,7 @@ app.use('/api/client', client);
 
 //Sql client declaration
 var sql = require('./Services/SqlClient.js');
-var sqlClient = new sql(process.env.SQL_CONNECTION_STRING);
+var sqlClient = new sql();
 
 app.get('/', (req, res) => {
   res.send('What up mate? Trying to know more about me?')

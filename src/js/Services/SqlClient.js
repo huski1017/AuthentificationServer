@@ -1,31 +1,23 @@
-const sql = require('mssql');
+const { Client } = require('pg');
+const dotenv = require('dotenv');
 
-let client = null;
+let sqlClient = null;
 
 class SqlClient {    
     constructor(connectionString) {
-        if (!client) {
-            let connectDatabase = async () => {
-                await this.connect(connectionString)
-            }
-            connectDatabase();
-            client = this;
-            return client;
+        if (!sqlClient) {
+            sqlClient = new Client({
+                user: process.env.PGUSER,
+                host: process.env.PGHOST,
+                database: process.env.PGDATABASE,
+                password: process.env.PGPASSWORD,
+                port: process.env.PGPORT,
+              })
+            sqlClient.connect()
+            return sqlClient;
         }
-        return client;
+        return sqlClient;
     }   
-
-    async connect(connectionString) {
-        try {
-            this.pool = await sql.connect(connectionString);
-        }
-        catch (error) {
-            console.log(error)
-            return false;
-        }
-        console.log('All good mate')
-        return true;
-    }
 }
 
 module.exports = SqlClient;
